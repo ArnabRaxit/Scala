@@ -1,0 +1,29 @@
+scala> precision.sortBy(_._2,false).first
+res60: (Double, Double) = (-4.836994458792532E9,0.0186219739292365)
+
+scala> predictionAndLabels.first
+res61: (Double, Double) = (-4.880695701298801E9,0.0)
+
+scala> predictionAndLabels.take(8)
+res62: Array[(Double, Double)] = Array((-4.880695701298801E9,0.0), (-5.686550300575257E9,0.0), (-4.876603919669139E9,0.0), (-5.078253510893857E9,0.0), (-5.6865504309095125E9,0.0), (-5.6865504309095125E9,0.0), (-5.686550439637216E9,0.0), (-4.99134701376728E9,0.0))
+
+scala> predictionAndLabels.count
+res63: Long = 8581
+
+scala> predictionAndLabels.filter(_(0)>-4.836994458792532E9).count
+<console>:52: error: (Double, Double) does not take parameters
+              predictionAndLabels.filter(_(0)>-4.836994458792532E9).count
+                                          ^
+
+scala> predictionAndLabels.filter(_._1>-4.836994458792532E9).count
+<console>:52: error: value >- is not a member of Double
+              predictionAndLabels.filter(_._1>-4.836994458792532E9).count
+                                             ^
+
+scala> predictionAndLabels.filter(_._1 > -4.836994458792532E9).count
+res66: Long = 535
+
+scala> predictionAndLabels.filter(_._1 > -4.836994458792532E9).filter(_._2 != 0.0).count
+res67: Long = 8
+
+scala> predictionAndLabels.filter(_._1 <= -4.836994458792532E9).filter(_._2 != 0.0).count
